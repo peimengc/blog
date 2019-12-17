@@ -37,6 +37,7 @@
 </template>
 
 <script>
+    import {createArticle,updateArticle,fetchArticle} from '../../api/articles'
     export default {
         name: "TheCreate",
         data() {
@@ -57,8 +58,7 @@
                     this.store()
             },
             store() {
-                axios.post('/api/articles', this.$data)
-                    .then((response) => {
+                createArticle(this.$data).then((response) => {
                         if (response.data.status_code === 0) {
                             alert(response.data.status_msg)
                             location.replace('/articles')
@@ -72,7 +72,7 @@
                     })
             },
             update() {
-                axios.put('/api/articles/' + this.id, this.$data)
+               updateArticle(this.id,this.$data)
                     .then((response) => {
                         if (response.data.status_code === 0) {
                             alert(response.data.status_msg)
@@ -101,7 +101,7 @@
         },
         created() {
             if (this.id) {
-                axios.get('/api/articles/' + this.id)
+                fetchArticle(this.id)
                     .then((response) => {
                         if (response.data.status_code === 0) {
                             this.title = response.data.data.title

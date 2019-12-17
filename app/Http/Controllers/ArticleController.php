@@ -18,6 +18,11 @@ class ArticleController extends Controller
         return view('articles.index');
     }
 
+    public function show($id)
+    {
+        return view('articles.show',compact('id'));
+    }
+
     public function create()
     {
         return view('articles.create');

@@ -7,14 +7,16 @@
             </div>
         </section>
         <div class="row">
-            <div v-for="item in list" :key="item.id" class="col-md-12">
+            <div v-for="item in list" :key="item.id" class="col-md-12 text-break">
                 <div class="py-2 border-bottom">
                     <h3>{{ item.title }}</h3>
-                    <p>{{ item.contents }}</p>
+                    <p>
+                        <a :href="'/articles/'+item.id">{{ item.contents }}</a>
+                    </p>
                     <span>{{ item.created_at }}</span>
                     <span class="pl-3">{{ item.updated_at }}</span>
                     <div class="float-right">
-                        <a class="btn btn-sm btn-primary" :href="'/articles/'+item.id">编辑</a>
+                        <a class="btn btn-sm btn-primary" :href="'/articles/'+item.id+'/edit'">编辑</a>
                         <a class="btn btn-sm btn-danger" @click="destroy(item.id)">删除</a>
                     </div>
                 </div>

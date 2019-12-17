@@ -28,7 +28,7 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        $article = Article::query()->findOrFail($id);
+        $article = Article::query()->with(['author','replies.user'])->findOrFail($id);
 
         return [
             'status_code' => 0,

@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <article-create :id="{{ $id ?? null }}"></article-create>
+    <article-create {{ isset($id) ? ':id='.$id : '' }}></article-create>
 @endsection
